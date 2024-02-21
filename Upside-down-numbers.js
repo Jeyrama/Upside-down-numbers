@@ -37,3 +37,5 @@ function solve(x, y) {
   }
   return count;
 };
+
+// or
