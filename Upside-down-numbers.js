@@ -39,3 +39,39 @@ function solve(x, y) {
 };
 
 // or
+
+const rotationMap = {
+  6: 9,
+  9: 6,
+};
+
+const rotate = (number) => {
+  const string = `${number}`;
+  
+  if (string.match(/[23457]/g)) {
+    return false;
+  }
+
+  const rotated = string
+    .split('')
+    .reverse()
+    .map(digit => rotationMap[digit] || parseInt(digit, 10))
+    .join('');
+
+  return parseInt(rotated, 10);
+};
+
+const solve = (x, y) => {
+  let count = 0;
+  let current = x;
+
+  while (current < y) {
+    if (rotate(current) === current) {
+      count += 1;
+    }
+
+    current += 1;
+  }
+
+  return count;
+};
